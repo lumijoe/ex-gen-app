@@ -1,0 +1,2 @@
+## Express generator、npm install
+## npm startで起動しhttp://localhost:3000アクセス
