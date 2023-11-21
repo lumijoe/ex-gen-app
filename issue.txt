@@ -13,6 +13,10 @@
     node.js実行→www（起動プログラム）→app.js(mainプログラム)→/index, /users, /hello
     →routesフォルダ（内のスクリプトindex.js,uses.js, hello.js）
 
+## warnスルーOK
+    ターミナル表示：body-parser deprecated undefined extended: provide extended option app.js:26:17
+    body-parserが直接使用されていない場合express.urlencoded()の実際の実装がbody-parserに依存しているため表示される。
+    Express 4.16.0以降では、body-parserがデフォルトで組み込まれていて警告表示となるがスルーOK
 
 ## app.jsの設定
     // 1:要モジュールのロード

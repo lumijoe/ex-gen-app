@@ -1,6 +1,7 @@
 // routes/hello.js
 // list4-9(p205)1121
-// views/hello.ejsにアクセスされた時の処理をするhello.jsとapp.js
+// views/hello.ejsにアクセスされた時の処理をするhello.js
+// app.jsで使用できるようにexport
 
 const express = require('express');
 const router = express.Router();
@@ -13,4 +14,4 @@ router.get('/', (req, res, next) => {
     res.render('hello', data);
 });
 
-module.exports =router;
+module.exports = router;
