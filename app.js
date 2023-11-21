@@ -23,6 +23,7 @@ app.set('view engine', 'ejs');
 // Middleware setup
 app.use(logger('dev'));                                  // logger dev
 app.use(express.json());                                 // express.json
+//npm start時のbody-parserのwarnスルーOK ↓
 app.use(express.urlencoded({ extend: false }));          // express.urlencoded
 app.use(cookieParser());                                 // cookieParser
 app.use(express.static(path.join(__dirname, 'public'))); // express.static path.json
