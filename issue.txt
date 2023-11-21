@@ -1,2 +1,12 @@
 ## Express generator、npm install
-## npm startで起動しhttp://localhost:3000アクセス
+## npm startで起動、http://localhost:3000
+    (ターミナル：起動時表示
+        > ex-gen-app@0.0.0 start
+        > node ./bin/www)
+    (ターミナル：アクセス時表示
+        GET / 200 11.364 ms - 207
+        GET /stylesheets/style.css 200 4.414 ms - 111
+        GET /favicon.ico 404 3.576 ms - 1003)
+
+## github  https://github.com/lumijoe/ex-gen-app
+
