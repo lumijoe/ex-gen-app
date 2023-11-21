@@ -1,5 +1,5 @@
 // app.js
-// list4-4(p194)1121
+// list4-4(p194), list4-10(p205)1121
 
 // 1:要モジュールのロード
 var createError = require('http-errors');        // error（エラー対処）
@@ -11,6 +11,7 @@ var logger = require('morgan');                  // logger morgan（reqログ出
 // 2:ルート用モジュールのロード
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var hello = require('./routes/hello');
 
 // 3:Expressオブジェクトの作成と基本設定
 var app = express();
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // express.static path.
 // Serve routes using routers
 app.use('/', indexRouter);
 app.use('users', usersRouter);
+app.use('/hello', hello);
 
 // 5:アクセスするルートとエラー用のapp.use作成
 // Catch 404 and forward to error handler
@@ -49,4 +51,4 @@ app.use(function(err, req, res, next) {
 });
 
 // 6:module.expressの設定
-module.express = app;
+module.exports = app;
