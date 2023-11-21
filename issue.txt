@@ -9,6 +9,10 @@
         GET /favicon.ico 404 3.576 ms - 1003)
 ## github  https://github.com/lumijoe/ex-gen-app
 
+## 流れ
+    node.js実行→www（起動プログラム）→app.js(mainプログラム)→/index, /users, /hello
+    →routesフォルダ（内のスクリプトindex.js,uses.js, hello.js）
+
 ## app.jsの設定
     // 1:要モジュールのロード
     var createError = require('http-errors');        // error（エラー対処）
