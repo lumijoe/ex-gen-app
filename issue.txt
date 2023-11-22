@@ -80,5 +80,8 @@
         exports.static = require('serve-static');
         exports.urlencoded = bodyParser.urlencoded　があればOK
 
+## クッキーより高機能なセッションのinstall(デフォルトで設定なし)
+    npm install express-session、　起動確認（app.jsにrequireする）
+
 
 
