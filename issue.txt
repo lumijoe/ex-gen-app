@@ -86,3 +86,4 @@
 ## 外部サイトにアクセスしてデータを取り出すxml2jsモジュールのインストール
     npm install xml2js、routes/hello.jsでrequire
     https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja（googleニュース）
+    サーバー負荷をかけないために、アクセス頻度の間隔設定や、応急処置としてリンク先のコメントアウトで対応

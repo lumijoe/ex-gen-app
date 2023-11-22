@@ -30,13 +30,13 @@ app.use(cookieParser());                                 // cookieParser
 app.use(express.static(path.join(__dirname, 'public'))); // express.static path.json
 
 // express-session set up
-var session_opt = {
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 60 * 60 * 1000 }
-};
-app.use(session(session_opt));
+// var session_opt = {
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: { maxAge: 60 * 60 * 1000 } 
+// };
+// app.use(session(session_opt));
 
 // 4:ルーティング使用
 // Serve routes using routers
