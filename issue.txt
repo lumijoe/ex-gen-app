@@ -83,5 +83,6 @@
 ## クッキーより高機能なセッションのinstall(デフォルトで設定なし)
     npm install express-session、　起動確認（app.jsにrequireする）
 
-
-
+## 外部サイトにアクセスしてデータを取り出すxml2jsモジュールのインストール
+    npm install xml2js、routes/hello.jsでrequire
+    https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja（googleニュース）
