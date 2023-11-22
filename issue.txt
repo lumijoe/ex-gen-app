@@ -69,6 +69,16 @@
     // 6:module.expressの設定
     module.express = app;
 
+## フォーム送信（Body Parserパッケージ）
+    最近のExpressではデフォルトで設定されている（レガシーではinstallが必要かも）
+    node_modules/express/lib/express.jsをチェックする
+        /**
+        * Expose middleware
+        */
+        exports.json = bodyParser.json
+        exports.query = require('./middleware/query');
+        exports.static = require('serve-static');
+        exports.urlencoded = bodyParser.urlencoded　があればOK
 
 
 
