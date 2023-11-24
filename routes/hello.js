@@ -1,5 +1,5 @@
 // routes/hello.js
-// list5-2(p249)1124　+ (p260)1124による変更
+// list5-7(p263)1124
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
@@ -27,6 +27,25 @@ router.get('/', (req, res, next) => {
             }
         });
     });
+});
+
+// /addの処理を作成
+router.get('/add', (req, res, next) => {
+    var data = {
+        title: 'Hello!/Add',
+        content: '新しいコードを入力：'
+    }
+    res.render('hello/add', data);
+});
+
+router.post('/add', (req, res, next) => {
+    const nm = req.body.name;
+    const ml = req.body.mail;
+    const ag = req.body.age;
+    db.serialize(() => {
+        db.run('insert into mydata (name, mail, age) values (?, ?, ?)', nm, ml, ag);
+    });
+    res.redirect('/hello');
 });
 
 module.exports = router;
