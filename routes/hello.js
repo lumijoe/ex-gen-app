@@ -1,5 +1,5 @@
 // routes/hello.js
-// list5-2(p249)1124
+// list5-2(p249)1124　+ (p260)1124による変更
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
                     title: 'Hello!',
                     content: rows // 取得したレコードデータ
                 };
-                res.render('hello', data);
+                res.render('hello/index', data); // p260による変更（hello to hello/index）
             }
         });
     });
