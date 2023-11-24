@@ -87,3 +87,5 @@
     npm install xml2js、routes/hello.jsでrequire
     https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja（googleニュース）
     サーバー負荷をかけないために、アクセス頻度の間隔設定や、応急処置としてリンク先のコメントアウトで対応
+
+## sqlite3をマックにインストールしてからデータベースを作成（GUIインストールをプロジェクト内で実行）、コードで使用できるようにターミナルでnpm install sqlite3 で使用できるように設定

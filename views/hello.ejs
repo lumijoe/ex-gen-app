@@ -1,5 +1,5 @@
 <!-- views/hello.ejs -->
-<!-- list4-18(p222)1122 -->
+<!-- list5-1(p248)1124 -->
 <!-- hello.jsにアクセスした際の処理はroutes/hello.js, app.js -->
 
 <!DOCTYPE html>
@@ -20,16 +20,17 @@
         <h1 class="display-4"><%= title %></h1>
     </header>
     <div role="main">
-        <% if (content != null) { %>
-        <ol>
+        <table class="table">
             <% for(var i in content) { %>
-            <% var obj = content[i]; %>
-            <li><a href="<%=obj.link %>">
-                <%=obj.title %></a></li>
+            <tr>
+                <% var obj = content[i]; %>
+                <th><%= obj.id %></th>
+                <td><%= obj.name %></td>
+                <td><%= obj.mail %></td>
+                <td><%= obj.age %></td>
             </tr>
             <% } %>
-        </ol>
-        <% } %>
+        </table>
     </div>
 </body>
 </html>
