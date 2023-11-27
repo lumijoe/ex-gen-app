@@ -40,7 +40,8 @@
         </table>
         <form method="post" action="/hello/delete">
             <input type="hidden" name="id" value="<%= mydata.id %>">
-            <input type="submit" value="削除" class="btn btn-primary">
+            <!-- 技術書の削除ボタンのCSS：primaryのところ削除警告としてbtn-dangerに修正 -->
+            <input type="submit" value="削除" class="btn btn-danger">
         </form>
     </div>
 </body>
