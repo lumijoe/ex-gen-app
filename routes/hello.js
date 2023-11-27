@@ -1,5 +1,5 @@
 // routes/hello.js
-// list5-7(p263)1124
+// list5-9(p268)1127
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
@@ -47,6 +47,25 @@ router.post('/add', (req, res, next) => {
     });
     res.redirect('/hello');
 });
+
+// showの処理を作成
+router.get('/show', (req, res, next) => {
+    const id = req.query.id;
+    db.serialize(() => {
+        const q = "select * from mydata where id = ?";
+        db.get(q, [id], (err, row) => {
+            if (!err) {
+                var data = {
+                    title: 'Hello/show',
+                    content: `id= ${id} のレコード：`,
+                    mydata: row
+                }
+                res.render('hello/show', data);
+            }
+        });
+    });
+});
+
 
 module.exports = router;
 // http://localhost:3000/hello

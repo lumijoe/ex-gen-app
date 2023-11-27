@@ -5,6 +5,8 @@
         > node ./bin/www)
 ## github  https://github.com/lumijoe/ex-gen-app
 
+## link href　のpublicフォルダのpublicは省略可能 /public/stylesheets... = /stylesheets...
+
 ## 流れ
     node.js実行→www（起動プログラム）→app.js(mainプログラム)→/index, /users, /hello
     →routesフォルダ（内のスクリプトindex.js,uses.js, hello.js）
@@ -85,3 +87,4 @@
     サーバー負荷をかけないために、アクセス頻度の間隔設定や、応急処置としてリンク先のコメントアウトで対応
 
 ## sqlite3をマックにインストールしてからデータベースを作成（GUIインストールをプロジェクト内で実行）、コードで使用できるようにターミナルでnpm install sqlite3 で使用できるように設定
+    データを編集したいときは、アプリケーション内のデータベースにアクセスし、プロジェクト内のファイルを選択して編集する
