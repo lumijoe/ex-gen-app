@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// /addの処理を作成
+// /add(add.ejs)の処理を作成 http://localhost:3000/hello/add
 router.get('/add', (req, res, next) => {
     var data = {
         title: 'Hello!/Add',
@@ -48,7 +48,7 @@ router.post('/add', (req, res, next) => {
     res.redirect('/hello');
 });
 
-// showの処理を作成
+// show(show.ejs)の処理を作成 http://localhost:3000/hello/show?id=1
 router.get('/show', (req, res, next) => {
     const id = req.query.id;
     db.serialize(() => {
@@ -57,7 +57,7 @@ router.get('/show', (req, res, next) => {
             if (!err) {
                 var data = {
                     title: 'Hello/show',
-                    content: `id= ${id} のレコード：`,
+                    content: `id = ${id} のレコード：`,
                     mydata: row
                 }
                 res.render('hello/show', data);
@@ -66,6 +66,36 @@ router.get('/show', (req, res, next) => {
     });
 });
 
+// edit(edit.ejs)の処理を作成
+// 技術書はhello/editだがtitleの一貫性のため大文字Hello/editへ修正
+router.get('/edit', (req, res, next) => {
+    const id = req.query.id;
+    db.serialize(() => {
+        const q = "select * from mydata where id = ?";
+        db.get(q, [id], (err, row) => {
+            if (!err) {
+                var data = {
+                    title: 'Hello/edit',
+                    content: `id = ${id} のレコードを編集：`,
+                    mydata: row
+                }
+                res.render('hello/edit', data);
+            }
+        });
+    });
+});
+
+router.post('/edit', (req, res, next) => {
+    const id = req.body.id;
+    const nm = req.body.name;
+    const ml = req.body.mail;
+    const ag = req.body.age;
+    const q = "update mydata set name = ?, mail = ?, age = ? where id = ?";
+    db.serialize(() => {
+        db.run(q, nm, ml, ag, id);
+    });
+    res.redirect('/hello');
+});
 
 module.exports = router;
 // http://localhost:3000/hello
