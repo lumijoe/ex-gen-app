@@ -126,12 +126,12 @@ router.post('/delete', (req, res, next) => {
 });
 
 // find(find.ejs)の処理を作成
-router.get('find', (req, res, next) => {
-    db.selialize(() => {
+router.get('/find', (req, res, next) => {
+    db.serialize(() => {
         db.all("select * from mydata", (err, rows) => {
             if (!err) {
                 var data = {
-                    title: 'hello/find',
+                    title: 'Hello/find',
                     find: '',
                     content: '検索条件を入力してください',
                     mydata: rows
@@ -142,9 +142,9 @@ router.get('find', (req, res, next) => {
     });
 });
 
-router.post('find', (req, res, next) => {
+router.post('/find', (req, res, next) => {
     var find = req.body.find;
-    db.selialize(() => {
+    db.serialize(() => {
         var q = "select * from mydata where ";
         db.all(q + find, [], (err, rows) => {
             if (!err) {
