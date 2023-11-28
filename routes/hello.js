@@ -1,8 +1,9 @@
 // routes/hello.js
-// list5-9(p268)1127
+// list5-15(p280)1128
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
+// express, expressrouter, sqlite3の使用を定義
 const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3'); //　追加
