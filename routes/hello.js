@@ -1,5 +1,5 @@
 // routes/hello.js
-// list5-17(p290)1129
+// list5-19(p298)1129
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
@@ -47,7 +47,10 @@ router.get('/add', (req, res, next) => {
 router.post('/add', [
     check('name', 'NAME は必ず入力して下さい。').notEmpty().escape(),
     check('mail', 'MAIL はメールアドレスを記入して下さい。').isEmail().escape(),
-    check('age', 'AGE は年齢（整数）を入力して下さい。').isInt().escape()
+    check('age', 'AGE は年齢（整数）を入力して下さい。').isInt().escape(),
+    check('age', 'AGE はゼロ以上120以下で入力して下さい。').custom(value => {
+        return value >= 0 & value <= 120;
+    })
 ], (req, res, next) => {
     const errors = validationResult(req);
 
