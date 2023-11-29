@@ -1,12 +1,13 @@
 // routes/hello.js
-// list5-15(p280)1128
+// list5-17(p290)1129
 // views/hello.ejsにアクセスされた時の処理をするhello.js
 // app.jsで使用できるようにexport
 
-// express, expressrouter, sqlite3の使用を定義
+// express, expressrouter, sqlite3, express-validatorの使用を定義
 const express = require('express');
 const router = express.Router();
-const sqlite3 = require('sqlite3'); //　追加
+const sqlite3 = require('sqlite3'); 
+const { check, validationResult } = require('express-validator');
 
 // データベースオブジェクトの取得
 const db = new sqlite3.Database('mydb.sqlite3');
@@ -31,22 +32,46 @@ router.get('/', (req, res, next) => {
 });
 
 // /add(add.ejs)の処理を作成 http://localhost:3000/hello/add
+// express-validatorでバリデーションを設定
 router.get('/add', (req, res, next) => {
     var data = {
         title: 'Hello!/Add',
-        content: '新しいコードを入力：'
+        content: '新しいコードを入力：',
+        // バリデーションチェックNGの際、NGテキストから再入力を可能にするための情報保持としてのform
+        form: { name:'', mail:'', age:0 }
     }
     res.render('hello/add', data);
 });
 
-router.post('/add', (req, res, next) => {
-    const nm = req.body.name;
-    const ml = req.body.mail;
-    const ag = req.body.age;
-    db.serialize(() => {
-        db.run('insert into mydata (name, mail, age) values (?, ?, ?)', nm, ml, ag);
-    });
-    res.redirect('/hello');
+router.post('/add', [
+    check('name', 'NAME は必ず入力して下さい。').notEmpty(),
+    check('mail', 'MAIL はメールアドレスを記入して下さい。').isEmail(),
+    check('age', 'AGE は年齢（整数）を入力して下さい。').isInt()
+], (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        var result = '<ul class="text-danger">';
+        var result_arr = errors.array();
+        for(var n in result_arr) {
+            result += `<li> ${result_arr[n].msg} </li>`
+        }
+        result += '</ul>';
+        var data = {
+            title:'Hello/Add',
+            content: result,
+            form: req.body
+        }
+        res.render('hello/add', data);
+    } else {
+        var nm = req.body.name;
+        var ml = req.body.mail;
+        var ag = req.body.age;
+        db.serialize(() => {
+            db.run('insert into mydata (name, mail, age) values (?, ?, ?)', nm, ml, ag);
+        });
+        res.redirect('/hello');
+    }
 });
 
 // show(show.ejs)の処理を作成 http://localhost:3000/hello/show?id=1

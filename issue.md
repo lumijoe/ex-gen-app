@@ -107,8 +107,9 @@
 - 正常ならば保存、問題ならばエラー表示で再入力を促す
 
 **Express Validator**<br>
-Express用をインストール：npm install express-validator<br>
-
+- Express用をインストール：npm install express-validator
+- 新しいデータを作成するファイルadd.ejsの設定：add.ejsでinput valueの値を変更（例：value="<%= form.name %>"）
+- プログラムの修正：hello.js
 
 
     
