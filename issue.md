@@ -112,7 +112,7 @@
 - プログラムの修正：hello.js
 
 **サニタイズ処理（HTMLタグデータの無効化）**<br>
-- ~ValidationChain~の後に記述(hello.jsのpostメソッド)：.escape()
+- ValidationChainの後に記述(hello.jsのpostメソッド)：.escape()
 - HTMLでの不正な画面表示など（例：imgタグで意図しない画像の埋め込み、JSのscriptタグで意図しない動的指示など）を防ぐ
 - 不正なくアクセスや読み書きを防ぐ
 - タグを入力されてもエスケープコードの変換という形でサイトの表示や動的指示などを変更されないように品質を保つ
