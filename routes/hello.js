@@ -33,6 +33,7 @@ router.get('/', (req, res, next) => {
 
 // /add(add.ejs)の処理を作成 http://localhost:3000/hello/add
 // express-validatorでバリデーションを設定
+// セキュリティ関連
 router.get('/add', (req, res, next) => {
     var data = {
         title: 'Hello!/Add',
@@ -44,9 +45,9 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post('/add', [
-    check('name', 'NAME は必ず入力して下さい。').notEmpty(),
-    check('mail', 'MAIL はメールアドレスを記入して下さい。').isEmail(),
-    check('age', 'AGE は年齢（整数）を入力して下さい。').isInt()
+    check('name', 'NAME は必ず入力して下さい。').notEmpty().escape(),
+    check('mail', 'MAIL はメールアドレスを記入して下さい。').isEmail().escape(),
+    check('age', 'AGE は年齢（整数）を入力して下さい。').isInt().escape()
 ], (req, res, next) => {
     const errors = validationResult(req);
 
