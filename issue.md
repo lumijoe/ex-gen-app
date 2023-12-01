@@ -121,6 +121,7 @@
 **カスタムバリデーション**<br>
 - 年齢入力フォーマットで年齢範囲を指定することも可能
 
+## Sequeliseを使用
 **データベースをORMで楽に管理するパッケージ Sequelizeをインストール**<br>
 - npm install sequelize <br>
     7 packages are looking for funding<br>
