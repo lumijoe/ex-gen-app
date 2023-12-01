@@ -121,7 +121,7 @@
 **カスタムバリデーション**<br>
 - 年齢入力フォーマットで年齢範囲を指定することも可能
 
-**データベースをORMで楽に管理する Sequelizeをインストール**<br>
+**データベースをORMで楽に管理するパッケージ Sequelizeをインストール**<br>
 - npm install sequelize <br>
     7 packages are looking for funding<br>
     run `npm fund` for details<br>
@@ -132,4 +132,8 @@
     脆弱性があるのでnpm audit fix --forceで解消してね、詳細は`npm audit`をチェックしてねという表示
 - npm audit fix --forceだけ対応してfound 0 vulnerabilitiesが脆弱性０になればOK
 - package.jsonをチェック
-- npm run devで起動に異常がないかチェックしておく
+- npm startで起動に異常がないかチェックしておく
+
+**Sequelzieコマンドプログラムパッケージ(便利にSequelizeを使うための)　Sequelize CLIをインストール**<br>
+- npm install sequelize-cli<br>
+- package.jsonをチェック、npm startで起動に異常がないかチェック
