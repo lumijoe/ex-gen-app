@@ -137,3 +137,20 @@
 **Sequelzieコマンドプログラムパッケージ(便利にSequelizeを使うための)　Sequelize CLIをインストール**<br>
 - npm install sequelize-cli<br>
 - package.jsonをチェック、npm startで起動に異常がないかチェック
+- インストールに異常がなければ初期化する：npx sequelize-cli init<br>
+    Sequelize CLI [Node: 18.16.1, CLI: 6.6.2, ORM: 6.35.1]<br>
+    Created "config/config.json"<br>
+    Successfully created models folder at "/Users/lumi/Desktop/ex-gen-app/models".<br>
+    Successfully created migrations folder at "/Users/lumi/Desktop/ex-gen-app/migrations".<br>
+    Successfully created seeders folder at "/Users/lumi/Desktop/ex-gen-app/seeders".<br>
+    初期化成功：バージョン情報、ファイル設定生成など完了している
+- **configフォルダ**：設定情報の管理。config.jsonという設定ファイルが生成される。
+    - ３つの設定（development:開発中の設定、test:テスト用の設定、production:正式リリースの設定）をチェック
+    - デフォルトのdatabase, dialect, storageを利用してSQLite3用に設定する（MySQL, PostgressSQLの場合はまた違う項目が必要）
+    - database:database_...の部分をデータベース名に修正
+    - storage:はないので、storage:データベースファイルを追加
+    - dialect:sqliteに修正
+- **migrationsフォルダ**：マイグレーションというデータベース変更情報などを管理するファイルを扱う。
+- **modelsフォルダ**：データベースアクセスに使用する「モデル」というオブジェクトを定義するところ。デフォルトで直下にindex.jsが生成される。
+- **seedersフォルダ**：シーダーという初期データを扱うためのもの。
+
