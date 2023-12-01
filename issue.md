@@ -120,4 +120,16 @@
 
 **カスタムバリデーション**<br>
 - 年齢入力フォーマットで年齢範囲を指定することも可能
-    
+
+**データベースをORMで楽に管理する Sequelizeをインストール**<br>
+- npm install sequelize <br>
+    7 packages are looking for funding<br>
+    run `npm fund` for details<br>
+    資金提供を呼びかけているので`npm fund`からそのサイトをチェックしてねという表示<br>
+    To address all issues (including breaking changes), run:<br>
+    npm audit fix --force<br>
+    Run `npm audit` for details.<br>
+    脆弱性があるのでnpm audit fix --forceで解消してね、詳細は`npm audit`をチェックしてねという表示
+- npm audit fix --forceだけ対応してfound 0 vulnerabilitiesが脆弱性０になればOK
+- package.jsonをチェック
+- npm run devで起動に異常がないかチェックしておく
