@@ -155,8 +155,21 @@
 - **modelsフォルダ**：データベースアクセスに使用する「モデル」というオブジェクトを定義するところ。デフォルトで直下にindex.jsが生成される。
 - **seedersフォルダ**：シーダーという初期データを扱うためのもの。
 
-## Sequelize テーブルにアクセスするための「モデル」の作成
+## Sequelize CLI　で簡単にテーブルにアクセスするための「モデル」を作成
 - データベースのレコードをモデルのオブジェクトとして扱える
 - Userというモデル（name:名前、pass:パスワード、mail:メール、age:年齢）
+- Sequelize CLIを使うと簡単に作成できる
+- VSCodeのターミナルで入力する<br>
+    npx sequelize-cli model:generate --name User --attributes name:string,pass:string,mail:string,age:integer
+- 入力後に表示される（生成したファイル名と位置するフォルダ名のパス）<br>
+    Sequelize CLI [Node: 18.16.1, CLI: 6.6.2, ORM: 6.35.1]<br>
+    New model was created at /Users/lumi/Desktop/ex-gen-app/models/user.js .<br>
+    New migration was created at /Users/lumi/Desktop/ex-gen-app/migrations/20231204060605-create-user.js .<br>
+- ディレクトリを確認<br>
+    - modelsフォルダの中にuser.jsファイルが生成されている
+    - migrationsフォルダの中に20231204060605-create-user.jsが生成されている
+    
+
+ 
 
 
