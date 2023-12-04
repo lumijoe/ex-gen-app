@@ -1,3 +1,6 @@
+// migrations/20231204060605-create-user.js
+// list6-4(p317)1204
+
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

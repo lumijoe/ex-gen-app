@@ -176,6 +176,54 @@
 - Userのassociateという値を設定
 - Userをreturnする
 
+## マイグレーションの実行(作成したモデル情報を元にデータベースを更新してくれる)
+- VSCodeのターミナルで入力する<br>
+    - npx sequelize-cli db:migrate --env development<br>
+- 入力後に表示される<br>
+    Sequelize CLI [Node: 18.16.1, CLI: 6.6.2, ORM: 6.35.1]<br>
+    Loaded configuration file "config/config.json".<br>
+    Using environment "development".<br>
+    == 20231204060605-create-user: migrating =======<br>
+    == 20231204060605-create-user: migrated (0.011s)<br>
+- ディレクトリを確認<br>
+    - db-dev.sqlite3ファイルが生成（マイグレーションによって生成されたデータベースファイル）
+    - config.jsonで作成しているdevelopmentを命令しているので<br>
+        storegeとしてdb-dev.sqlite3ができたという事<br>
+        (リリースの際にはnpx sequelize-cli db:migrate --env developmentの部分を、npx sequelize-cli db:migrate --env productとする？)
+
+## 生成されたdb-dev.sqlite3ファイルを確認
+- 確認方法（VSCodeでは開けないエラー：このファイルはバイナリか、サポートされていないテキスト エンコードを使用しているため、テキスト エディターに表示されません。）
+- DB Browserで開くと確認が可能（データベースのあるローカルPCでアプリから確認）
+    - DB Browser for SQLiteアプリを開きGUIタブのOpenDataBaseクリック
+    - 開発中のディレクトリから（Finder GUIより）db-dev.sqlite3をOpenクリック
+    - 中身がDB Browser for SQLiteアプリ内に表示される
+    - わかりにくい時はプリントをクリックするとリストで確認できる
+
+## 20231204060605-create-user.jsを確認
+- テーブルとカラムの情報の処理がなされている
+
+## シーディング（モデルとデータベース側のテーブルを利用するため「最初に用意するレコード（シード）」を作成すること）の作成と、作成後の実行コマンド
+- シーディングのスクリプトファイルの作成（sample-userという名で作成）
+- VSCodeターミナルで入力：npx sequelize-cli seed:generate --name sample-user
+    - 表示される<br>
+        Sequelize CLI [Node: 18.16.1, CLI: 6.6.2, ORM: 6.35.1]<br>
+        seeders folder at "/Users/lumi/Desktop/ex-gen-app/seeders" already exists.
+        New seed was created at /Users/lumi/Desktop/ex-gen-app/seeders/20231204070259-sample-user.js .
+- seedersフォルダに20231204070259-sample-user.jsファイルが生成されるので確認
+    - down関数にシードを作成する際の処理を記述
+    - downに元に戻す際の処理を記述
+- シーディングファイルを記述後、実行が必要:npx sequelize-cli db:seed:all
+    - 表示される<br>
+    Sequelize CLI [Node: 18.16.1, CLI: 6.6.2, ORM: 6.35.1]<br>
+    Loaded configuration file "config/config.json".<br>
+    Using environment "development".<br>
+    == 20231204070259-sample-user: migrating =======<br>
+    == 20231204070259-sample-user: migrated (0.008s)<br>
+
+
+
+
+
 
 
  
