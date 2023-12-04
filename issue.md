@@ -169,6 +169,13 @@
 - ディレクトリを確認<br>
     - modelsフォルダの中にuser.jsファイルが生成されている
     - migrationsフォルダの中に20231204060605-create-user.jsが生成されている
+## Userモデルについて（user.jsをチェック）
+- デフォルトで書かれているものを利用、またはカスタムもOK
+- モデルは外部から利用するのでmodule.exportsとreturnしておく
+- Userというオブジェクトを作成
+- Userのassociateという値を設定
+- Userをreturnする
+
 
 
  
