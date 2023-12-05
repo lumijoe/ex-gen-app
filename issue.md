@@ -235,6 +235,8 @@
 - p326:list6-8:views/users/index.ejs(1205Done)
 - p327:図6-13の表示をチェックhttp://localhost:3000/users
 - 予想：モデルの作成は完了、データの中身がないため、シーディングができてないかと。undoしてdoする作業npx sequelize-cli db:seed:undo:allとnpx sequelize-cli db:seed:allを実行してみる
+- バグ解消（app.jsのルーティング設定で/が抜けていたので追記（/users））
+
 
 
 
