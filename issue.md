@@ -220,6 +220,11 @@
     == 20231204070259-sample-user: migrating =======<br>
     == 20231204070259-sample-user: migrated (0.008s)<br>
 
+## シーディング後のデータベース内テーブルへのアクセス（例：Usersテーブル）
+- 例：Usersテーブルのレコードを全て取得しrouteres/users.jsに一覧表示するコードを実装
+- テンプレートを用意(views/users/index.ejs)を作成
+
+
 
 
 
