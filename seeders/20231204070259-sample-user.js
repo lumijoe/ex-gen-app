@@ -2,10 +2,8 @@
 // list6-6(p321)1204
 
 'use strict';
-
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
       {
         name: 'Taro',
@@ -41,24 +39,8 @@ module.exports = {
       }
     ]);
   },
-    
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
 
-  async down (queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Users', null, {});
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
   }
 };
