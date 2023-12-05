@@ -224,6 +224,18 @@
 - 例：Usersテーブルのレコードを全て取得しrouteres/users.jsに一覧表示するコードを実装
 - テンプレートを用意(views/users/index.ejs)を作成
 
+## バグっているのでp302−327図6-13が表示されるようファイルを再確認
+- p307:list6-1:config.json確認
+- p308:list6-2:config.json上書き
+- p312:list6-3:models/user.js
+- p317:list6-4:migrations/2023....create-user.js
+- p320:list6-5:seeders/2023...sample-user.js確認
+- p321:list6-6:seeders/2023...sample-user.js上書き
+- p324:list6-7:routes/users.js
+- p326:list6-8:views/users/index.ejs
+- p327:図6-13の表示をチェックhttp://localhost:3000/users
+
+
 
 
 
