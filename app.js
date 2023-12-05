@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // express.static path.
 // 4:ルーティング使用
 // Serve routes using routers
 app.use('/', indexRouter);
-app.use('users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/hello', hello);
 
 // 5:アクセスするルートとエラー用のapp.use作成

@@ -224,7 +224,7 @@
 - 例：Usersテーブルのレコードを全て取得しrouteres/users.jsに一覧表示するコードを実装
 - テンプレートを用意(views/users/index.ejs)を作成
 
-## バグっているのでp302−327図6-13が表示されるようファイルを再確認
+## p327図6-13表示されずバグ発生、p302−327のファイルやデータベースを再確認
 - p307:list6-1:config.json確認（1205Done）
 - p308:list6-2:config.json上書き（1205Done）
 - p312:list6-3:models/user.js（1205Done）
