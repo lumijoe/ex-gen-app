@@ -1,16 +1,17 @@
 // routes/users.js
-// list6-7(p324)1205
+// list6-10(p332)1206
 
 const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
 
-/* GET users listing. */
+const { Op } = require("sequelize");
+
 router.get('/',(req, res, next) => {
   const id = req.query.id
   db.User.findAll({
     where: {
-      id: id
+      id:{ [Op.lte]:id }
     }
   }).then(usrs => {
     var data = {
@@ -18,7 +19,25 @@ router.get('/',(req, res, next) => {
       content: usrs
     }
     res.render('users/index', data);
-    });
+  });
 });
 
-module.exports = router;
+module.exports=router;
+
+// list6-9(p330)1206
+// /* GET users listing. */
+// router.get('/',(req, res, next) => {
+//   const id = req.query.id
+//   db.User.findAll({
+//     where: {
+//       id: id
+//     }
+//   }).then(usrs => {
+//     var data = {
+//       title: 'Users/Index',
+//       content: usrs
+//     }
+//     res.render('users/index', data);
+//     });
+// });
+// module.exports = router;

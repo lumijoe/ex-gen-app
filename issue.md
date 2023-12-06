@@ -240,7 +240,8 @@
     - シーディングエラーでデータ中身が紛失していたため再シーディングを実行（undoとdo）
 
 ## クエリパラメーターでIDを表示したり検索する
-- const id = req.query.idの値をwhereに指定してfindAllから検索
+- 特定の値：const id = req.query.idの値をwhereに指定してfindAllから検索
+- id以下の値：const { Op }〜やid:{[Op.lte:id]}をwhereに指定してfindAllから検索（Operator less than-equal (<=のような比較演算子を使用)）
 
 
 
