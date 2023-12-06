@@ -7,7 +7,12 @@ const db = require('../models/index');
 
 /* GET users listing. */
 router.get('/',(req, res, next) => {
-  db.User.findAll().then(usrs => {
+  const id = req.query.id
+  db.User.findAll({
+    where: {
+      id: id
+    }
+  }).then(usrs => {
     var data = {
       title: 'Users/Index',
       content: usrs

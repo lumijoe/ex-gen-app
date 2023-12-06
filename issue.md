@@ -235,11 +235,12 @@
 - p326:list6-8:views/users/index.ejs(1205Done)
 - p327:図6-13の表示をチェックhttp://localhost:3000/users
 - 予想：モデルの作成は完了、データの中身がないため、シーディングができてないかと。undoしてdoする作業npx sequelize-cli db:seed:undo:allとnpx sequelize-cli db:seed:allを実行してみる
-- バグ原因と対応
+- バグ原因と対応（1205バグ修正完了）
     - app.jsのルーティング設定で/が抜けていたので追記（/users）
     - シーディングエラーでデータ中身が紛失していたため再シーディングを実行（undoとdo）
 
-
+## クエリパラメーターでIDを表示したり検索する
+- const id = req.query.idの値をwhereに指定してfindAllから検索
 
 
 
