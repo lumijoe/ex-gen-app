@@ -243,6 +243,7 @@
 - 特定の値：const id = req.query.idの値をwhereに指定してfindAllから検索
 - id以下の値：const { Op }〜やid:{[Op.lte:id]}をwhereに指定してfindAllから検索（Operator less than-equal (<=のような比較演算子を使用)）
 - nameなど一部を含む値：name：{[Op.like]:'%'+nm+'%'}
+- 複数条件and検索：age: {[Op.gte]:min, [Op.lte]:max}
 
 
 
