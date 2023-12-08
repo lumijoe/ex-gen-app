@@ -9,18 +9,24 @@ const { Op } = require('sequelize');
 router.get('/',(req, res, next) => {
   const nm = req.query.name;
   const ml = req.query.mail;
+  
+  // 技術書エラーによるコード修正
+  // nameとmailがundefinedでない事を確認する
+  const whereClause = {};
+  if (nm !== undefined) {
+    whereClause.name = { [Op.like]: '%' + nm + '%' };
+  }
+  if (ml !== undefined) {
+    whereClause.mail = { [Op.like]: '%' + ml + '%' };
+  }
+
   db.User.findAll({
-    where: {
-      [Op.or]:[
-        {name:{[Op.like]:'%'+nm+'%'}},
-        {mail:{[Op.like]:'%'+ml+'%'}}
-      ]
-    }
+    where: whereClause
   }).then(usrs => {
-    var data = {
+    const data = {
       title: 'Users/Index',
       content: usrs
-    }
+    };
     res.render('users/index', data);
   });
 });

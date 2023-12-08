@@ -249,7 +249,45 @@ http://localhost:3000/users?min10&max=30
 
 ## ER図のDBeaverを導入
 
-## エラー
+## エラー回避のコード修正
+**list6-13(p337)技術書**
+db.User.findAll({
+    where: {
+      [Op.or]:[
+        {name:{[Op.like]:'%'+nm+'%'}},
+        {mail:{[Op.like]:'%'+ml+'%'}}
+      ]
+    }
+  }).then(usrs => {
+    var data = {
+      title: 'Users/Index',
+      content: usrs
+    }
+    res.render('users/index', data);
+  });
+});
+を変更
+**nameやmailがundefinedでないことを確認する**
+const whereClause = {};
+  if (nm !== undefined) {
+    whereClause.name = { [Op.like]: '%' + nm + '%' };
+  }
+  if (ml !== undefined) {
+    whereClause.mail = { [Op.like]: '%' + ml + '%' };
+  }
+
+  db.User.findAll({
+    where: whereClause
+  }).then(usrs => {
+    const data = {
+      title: 'Users/Index',
+      content: usrs
+    };
+    res.render('users/index', data);
+  });
+});
+
+
 
 
 
