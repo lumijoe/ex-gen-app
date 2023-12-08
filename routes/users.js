@@ -1,5 +1,5 @@
 // routes/users.js
-// list6-13(p337)1208
+// list6-15(p341)1208
 
 const express = require('express');
 const router = express.Router();
@@ -29,6 +29,26 @@ router.get('/',(req, res, next) => {
     };
     res.render('users/index', data);
   });
+});
+
+router.get('/add', (req, res, next) => {
+  var data = {
+    title: 'Users/Add'
+  }
+  res.render('users/add', data);
+});
+
+router.post('/add',(req, res, next) => {
+  db.sequelize.sync()
+    .then(() => db.User.create({
+      name: req.body.name,
+      pass: req.body.pass,
+      mail: req.body.mail,
+      age: req.body.age
+    }))
+    .then(usr => {
+      res.redirect('/users');
+    });
 });
 
 module.exports=router;

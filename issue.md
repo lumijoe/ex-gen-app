@@ -250,7 +250,7 @@ http://localhost:3000/users?min10&max=30
 ## ER図のDBeaverを導入
 
 ## エラー回避のコード修正
-**list6-13(p337)技術書**
+**list6-13(p337)技術書（undefinedエラー）**
 db.User.findAll({
     where: {
       [Op.or]:[
@@ -267,7 +267,7 @@ db.User.findAll({
   });
 });
 を変更
-**nameやmailがundefinedでないことを確認する**
+**nameやmailがundefinedでないことを確認する処理を追加**
 const whereClause = {};
   if (nm !== undefined) {
     whereClause.name = { [Op.like]: '%' + nm + '%' };
