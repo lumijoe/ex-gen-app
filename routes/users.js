@@ -1,5 +1,5 @@
 // routes/users.js
-// list6-15(p341)1208
+// list6-20(p354)1211
 
 const express = require('express');
 const router = express.Router();
@@ -65,19 +65,36 @@ router.get('/edit', (req, res, next) => {
 });
 
 router.post('/edit',(req, res, next) => {
+  db.User.findByPk(req.body.id)
+    .then(usr => {
+      usr.name = req.body.name;
+      usr.pass = req.body.pass;
+      usr.mail = req.body.mail;
+      usr.age = req.body.age;
+      usr.save().ten(() =>res.redirect('/users'));
+    });
+});
+
+// Users/Delete
+router.get('/delete', (req, res, next) => {
+  db.User.findByPk(req.query.id)
+    .then(usr => {
+      var data = {
+        title: 'Users/Delete',
+        form: usr
+      }
+      res.render('users/delte', data);
+    }); 
+});
+
+router.post('/delete',(req, res, next) => {
   db.sequelize.sync()
-    .then(() => db.User.update({
-      name: req.body.name,
-      pass: req.body.pass,
-      mail: req.body.mail,
-      age: req.body.age
-    },
-    {
+    .then(() => db.User.destroy({
       where:{id:req.body.id}
     }))
     .then(usr => {
       res.redirect('/users');
     });
-});
+  });
 
 module.exports=router;
