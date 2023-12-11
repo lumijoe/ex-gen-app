@@ -1,5 +1,5 @@
 // routes/users.js
-// list6-20(p354)1211
+// list6-21(p356)1211
 
 const express = require('express');
 const router = express.Router();
@@ -88,13 +88,10 @@ router.get('/delete', (req, res, next) => {
 });
 
 router.post('/delete',(req, res, next) => {
-  db.sequelize.sync()
-    .then(() => db.User.destroy({
-      where:{id:req.body.id}
-    }))
+  db.User.findByPk(req.body.id)
     .then(usr => {
-      res.redirect('/users');
+      usr.destroy().ten(() =>res.redirect('/users'));
     });
-  });
+});
 
 module.exports=router;
