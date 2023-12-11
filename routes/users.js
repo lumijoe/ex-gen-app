@@ -83,7 +83,7 @@ router.get('/delete', (req, res, next) => {
         title: 'Users/Delete',
         form: usr
       }
-      res.render('users/delte', data);
+      res.render('users/delete', data);
     }); 
 });
 
