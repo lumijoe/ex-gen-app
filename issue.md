@@ -288,9 +288,9 @@ const whereClause = {};
 });
 
 ## CRUDバリデーション問題を解決するためのSequelizeバリデーション
-- users/addで空情報も保存してしまうこと。
-- バリデーション機能を高めるにはExpress　validatorではなく
-- Sequelize独自バリデーションを使用
+- users/addで空情報を保存しないための特定条件の設定
+- バリデーション機能を高めるにはExpress validatorではなく
+- Sequelize独自バリデーションを使用し特定条件を設定すること
 
 
 
