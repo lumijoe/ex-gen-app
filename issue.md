@@ -291,6 +291,7 @@ const whereClause = {};
 - users/addで空情報を保存しないための特定条件の設定
 - バリデーション機能を高めるにはExpress validatorではなく
 - Sequelize独自バリデーションを使用し特定条件を設定すること
+- エラーメッセージの表示設定（日本語設定可能）
 
 
 
