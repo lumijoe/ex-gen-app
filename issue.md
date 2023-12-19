@@ -293,6 +293,37 @@ const whereClause = {};
 - Sequelize独自バリデーションを使用し特定条件を設定すること
 - エラーメッセージの表示設定（日本語設定可能）
 
+## Sequelizeバリデーション設定
+- is:パターン（正規表現パターンに合致する）
+- not:パターン（正規表現パターンに合致しない）
+- isEmail: true（メールアドレス形式）
+- isUrl: true（URLの形式）
+- isIP: true（IPアドレス形式）※IPv4,IPv6同様
+- isAlpha: true（アルファベットのみ）
+- isAlphanumeric: true（アルファベット＋数字のみ）
+- isNumeric: true（数字のみ）
+- isInt: true（整数値）
+- isFloat: true（実数値）
+- isDecimal: true（数値全般）
+- isLowercase: true（小文字のみ）
+- isUppercase: true（大文字のみ）
+- notNull: true（nullでない）
+- isNull: true（nullである）
+- notEmpty:true（空でない（必須項目））
+- equals: 値（指定の値に等しい）
+- contains: 値（指定の値を含む）
+- notContains: 値（指定の値を含まない）
+- notIn: 配列（配列に含まれていない）
+- isIn: 配列（配列に含まれている）
+- len: [最小、最大]（指定範囲の長さ）
+- isUUID: 整数（UUID値のみを許可）
+- isDate:　true（日時の値）
+- isAfter: 日時（指定日時を含まない〜）
+- isBefore: 日時（指定日時を含まない〜）
+- max: 値（最大値）
+- min: 値（最小値）
+- isCreditCard:true（クレジットカード形式）
+
 
 
 
