@@ -13,6 +13,7 @@ const session = require('express-session');      // express-session
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var hello = require('./routes/hello');
+var amount = require('./routes/amount');
 
 // 3:Expressオブジェクトの作成と基本設定
 var app = express();
@@ -25,7 +26,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));                                  // logger dev
 app.use(express.json());                                 // express.json
 //npm start時のbody-parserのwarnスルーOK ↓
-app.use(express.urlencoded({ extend: false }));          // express.urlencoded
+app.use(express.urlencoded({ extend: true }));          // express.urlencoded
 app.use(cookieParser());                                 // cookieParser
 app.use(express.static(path.join(__dirname, 'public'))); // express.static path.json
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // express.static path.
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hello', hello);
+app.use('/amount', amount);
 
 // 5:アクセスするルートとエラー用のapp.use作成
 // Catch 404 and forward to error handler
