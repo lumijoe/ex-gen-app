@@ -38,6 +38,9 @@ router.get('/', (req, res, next) => {
     });
 });
 
+
+
+/*
 router.get('/add', (req, res, next) => {
     var data = {
         title: 'CashNyan/Add',
@@ -85,6 +88,37 @@ router.post('/add', [
         res.redirect('/amount');
     }
 });
+*/
+
+// バリデーションの中でamountBalanceを計算する
+router.post('/add', [
+    check('category', 'カテゴリ名を入力').notEmpty().escape(),
+    check('amountBalance', '残高表示').custom((value, { req }) => {
+        // amountBalanceを計算して代入
+        req.body.amountBalance = req.body.amountIncome - req.body.amountExpenditure;
+        // 0以上の値であることを確認
+        return req.body.amountBalance >= 0;
+    }),
+    check('amountExpenditure', '支出入力').custom(value => value >= 0),
+    check('amountIncome', '収入入力').custom(value => value >= 0),
+], (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        // エラーがある場合の処理...
+    } else {
+        // データベースへの挿入前にamountBalanceを計算してから挿入
+        req.body.amountBalance = req.body.amountIncome - req.body.amountExpenditure;
+        const { category, amountBalance, amountExpenditure, amountIncome } = req.body;
+        db.serialize(() => {
+            db.run('insert into cashnyan (category, amountBalance, amountExpenditure, amountIncome) values (?, ?, ?, ?)', category, amountBalance, amountExpenditure, amountIncome);
+        });
+        res.redirect('/amount');
+    }
+});
+
+
+
 
 // show(show.ejs)の処理を作成　http://localhost:3000/hello/show?category=A銀行
 

@@ -10,6 +10,33 @@
         crossorigin="anonymous" />
     <link rel="stylesheet"
         href="/stylesheets/style.css" />
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 収入金額と支出金額の入力フィールドを取得
+            var amountIncomeInput = document.getElementById('amountIncome');
+            var amountExpenditureInput = document.getElementById('amountExpenditure');
+            // 残高を表示する入力フィールドを取得
+            var amountBalanceInput = document.getElementById('amountBalance');
+    
+            // 収入金額と支出金額が変更されたときのイベントリスナーを追加
+            amountIncomeInput.addEventListener('input', updateBalance);
+            amountExpenditureInput.addEventListener('input', updateBalance);
+    
+            // 残高を計算して表示する関数
+            function updateBalance() {
+                var income = parseFloat(amountIncomeInput.value) || 0;
+                var expenditure = parseFloat(amountExpenditureInput.value) || 0;
+                var balance = income - expenditure;
+    
+                // 計算結果を残高の入力フィールドに反映
+                amountBalanceInput.value = balance.toFixed(0); // 小数点以下2桁まで表示
+    
+                // フォームが有効な場合、送信ボタンを有効にする（送信ボタンのIDがsubmitBtnと仮定）
+                document.getElementById('submitBtn').disabled = false;
+            }
+        });
+    </script>
 </head>
 
 <body class="container">
@@ -23,10 +50,19 @@
                 <label for="category">カテゴリ</label>
                 <input type="text" name="category" id="category" value="<%= form.category %>" class="form-control">
             </div>
+             
             <div class="form-group">
                 <label for="amountBalance">残高</label>
                 <input type="number" name="amountBalance" id="amountBalance" value="<%= form.amount %>" class="form-control">
             </div>
+            
+            <!--  
+            <div class="form-group">
+                <label for="amountBalance">残高</label>
+                <p type="number" name="amountBalance" id="amountBalance" value="<%= form.amountBalance %>" class="form-control" readonly><%= form.amountBalance %></p>
+            </div>
+            -->
+            
             <div class="form-group">
                 <label for="amountExpenditure">支出金額</label>
                 <input type="number" name="amountExpenditure" id="amountExpenditure" value="<%= form.amountExpenditure %>" class="form-control">
