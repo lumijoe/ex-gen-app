@@ -7,7 +7,6 @@ var express = require('express');                // express（本体）
 var path = require('path');                      // path（ファイルパスを扱う）
 var cookieParser = require('cookie-parser');     // cookie-parser（値変換処理系）
 var logger = require('morgan');                  // logger morgan（reqログ出力系）
-const session = require('express-session');      // express-session
 
 // 2:ルーティング設定
 var indexRouter = require('./routes/index');
@@ -26,18 +25,11 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));                                  // logger dev
 app.use(express.json());                                 // express.json
 //npm start時のbody-parserのwarnスルーOK ↓
-app.use(express.urlencoded({ extend: true }));          // express.urlencoded
+app.use(express.urlencoded({ extended: true }));          // express.urlencoded
 app.use(cookieParser());                                 // cookieParser
 app.use(express.static(path.join(__dirname, 'public'))); // express.static path.json
 
-// express-session set up
-// var session_opt = {
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: { maxAge: 60 * 60 * 1000 } 
-// };
-// app.use(session(session_opt));
+
 
 // 4:ルーティング使用
 // Serve routes using routers
