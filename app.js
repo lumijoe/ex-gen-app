@@ -10,8 +10,6 @@ var logger = require('morgan');                  // logger morgan（reqログ出
 
 // 2:ルーティング設定
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var hello = require('./routes/hello');
 var amount = require('./routes/amount');
 
 // 3:Expressオブジェクトの作成と基本設定
@@ -34,8 +32,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // express.static path.
 // 4:ルーティング使用
 // Serve routes using routers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/hello', hello);
 app.use('/amount', amount);
 
 // 5:アクセスするルートとエラー用のapp.use作成

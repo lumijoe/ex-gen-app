@@ -39,8 +39,6 @@ router.get('/', (req, res, next) => {
 });
 
 
-
-/*
 router.get('/add', (req, res, next) => {
     var data = {
         title: 'CashNyan/Add',
@@ -52,43 +50,6 @@ router.get('/add', (req, res, next) => {
     res.render('amount/add', data);
 });
 
-router.post('/add', [
-    check('category', 'カテゴリ名を入力').notEmpty().escape(),
-    check('amountBalance', '残高表示').custom(value => {
-        return value >= 0 }),
-    check('amountExpenditure', '支出入力').custom(value => {
-        return value >= 0 }),
-    check('amountIncome', '収入入力').custom(value => {
-        return value >= 0 }),
-], (req, res, next) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        var result = '<ul class="text-danger">';
-            var result_arr = errors.array();
-            for (var n in result_arr) {
-                result += `<li> ${result_arr[n].msg} </li>`
-            }
-        result += '</ul>';
-
-        var data = {
-            title: 'CashNyan/Add',
-            content: result,
-            form: req.body
-        }
-        res.render('amount/add', data);
-    } else {
-        var ct = req.body.category;
-        var aB = req.body.amountBalance;
-        var aE = req.body.amountExpenditure;
-        var aI = req.body.amountIncome;
-        db.serialize(() => {
-            db.run('insert into cashnyan (category, amountBalance, amountExpenditure, amountIncome) values (?, ?, ?, ?)', ct, aB, aE, aI);
-        });
-        res.redirect('/amount');
-    }
-});
-*/
 
 // バリデーションの中でamountBalanceを計算する
 router.post('/add', [
